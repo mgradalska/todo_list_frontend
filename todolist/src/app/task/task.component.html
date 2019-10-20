@@ -1,0 +1,11 @@
+<li [ngClass]="{'completed': task.status==='DONE'}">
+  <div class="form-check">
+    <label class="form-check-label">
+      <input class="checkbox" [checked]="task.status==='DONE'" type="checkbox" (click)="changeStatus()">
+      {{task.title}}
+      <i class="input-helper"></i>
+    </label>
+  </div>
+  <i class="remove mdi mdi-close-circle-outline" (click)="delete()"></i>
+</li>
+
