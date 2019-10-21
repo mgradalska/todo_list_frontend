@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {HttpService} from "../http-service.service";
+import {Task} from "../interfaces/task";
 
 @Component({
   selector: 'app-task',
@@ -8,24 +8,22 @@ import {HttpService} from "../http-service.service";
 })
 export class TaskComponent implements OnInit {
 
-  constructor(private httpService: HttpService) {
+  constructor() {
   }
 
-  @Input() task;
-  @Output() deleted = new EventEmitter<boolean>();
+  @Input() task: Task;
+  @Output() deleteTask = new EventEmitter<Task>();
+  @Output() updateTask = new EventEmitter<Task>();
 
-  changeStatus() {
+  changeStatus(): void {
     this.task.status = this.task.status === 'TODO' ? 'DONE' : 'TODO';
-    this.httpService.updateTask(this.task);
+    this.updateTask.emit(this.task);
   }
 
   delete() {
-    this.httpService.deleteTask(this.task).subscribe({
-      next: response => this.deleted.emit(this.task)
-    })
+    this.deleteTask.emit(this.task);
   }
 
   ngOnInit() {
   }
-
 }

@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
+import {Board} from "./interfaces/board";
+import {ApiResponse} from "./interfaces/api-response";
+import {Task} from "./interfaces/task";
 
 @Injectable({
   providedIn: 'root'
@@ -15,19 +18,19 @@ export class HttpService {
   private boardsUrl = `${this.apiUrl}boards/`;
   private tasksUrl = `${this.apiUrl}tasks/`;
 
-  getBoards(): Observable<any> {
-    return this.http.get(this.boardsUrl)
+  getBoards(): Observable<ApiResponse<Board>> {
+    return this.http.get<ApiResponse<Board>>(this.boardsUrl)
   }
 
-  updateTask(task): Observable<any> {
-    return this.http.patch(`${this.tasksUrl}${task.id}/`, task)
+  updateTask(task: Task): Observable<Task> {
+    return this.http.patch<Task>(`${this.tasksUrl}${task.id}/`, task)
   }
 
-  deleteTask(task): Observable<any> {
-    return this.http.delete(`${this.tasksUrl}${task.id}/`)
+  deleteTask(task: Task): Observable<null> {
+    return this.http.delete<null>(`${this.tasksUrl}${task.id}/`)
   }
 
-  addTask(taskData): Observable<any> {
-    return this.http.post(this.tasksUrl, taskData)
+  addTask(taskData): Observable<Task> {
+    return this.http.post<Task>(this.tasksUrl, taskData)
   }
 }

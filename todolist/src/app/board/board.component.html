@@ -7,7 +7,7 @@
     <div class="list-wrapper">
       <ul class="d-flex flex-column-reverse todo-list">
         <div *ngFor="let task of board.tasks">
-          <app-task (deleted)="onTaskDelete($event)" [task]="task"></app-task>
+          <app-task (updateTask)="onTaskUpdate($event)" (deleteTask)="onTaskDelete($event)" [task]="task"></app-task>
         </div>
       </ul>
     </div>

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row" *ngFor="let board of boards">
       <div class="col">
-        <app-board [board]="board"></app-board>
+        <app-board (updateTask)="onTaskUpdate($event)" (deleteTask)="onTaskDelete(board, $event)" [board]="board"></app-board>
       </div>
     </div>
   </div>
