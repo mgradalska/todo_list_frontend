@@ -18,7 +18,7 @@ export class TaskComponent implements OnInit {
   @Output() updateTask = new EventEmitter<Task>();
 
   changeStatus(): void {
-    this.task.status = this.task.status === 'TODO' ? 'DONE' : 'TODO';
+    this.task.status = this.task.status === 'DONE' ? 'TODO' : 'DONE';
     this.updateTask.emit(this.task);
   }
 

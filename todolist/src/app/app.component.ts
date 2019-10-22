@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   };
 
   boards: Board[];
+  searchBoardString: string;
 
   onTaskDelete(board: Board, taskToDelete: Task) {
     this.httpService
@@ -37,6 +38,10 @@ export class AppComponent implements OnInit {
       .subscribe({
         next: addedTask => board.tasks.push(addedTask)
       })
+  }
+
+  updateSearchString(searchString: string) {
+    this.searchBoardString = searchString;
   }
 
   ngOnInit() {

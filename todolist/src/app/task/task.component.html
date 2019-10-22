@@ -1,8 +1,10 @@
 <li [ngClass]="{'completed': task.status==='DONE'}">
+  ,
   <div class="form-check">
     <input class="inline" [checked]="task.status==='DONE'" type="checkbox" (click)="changeStatus()"/>
     <label (click)="showDetails()" class="inline">
       {{task.title}}
+      <div *ngIf="task.status==='IN PROGRESS'" class="inline in-progress-text">IN PROGRESS</div>
     </label>
   </div>
   <i class="remove mdi mdi-close-circle-outline" (click)="delete()"></i>

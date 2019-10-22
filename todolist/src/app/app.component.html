@@ -1,6 +1,7 @@
 <div class="padding">
+  <app-board-search (searchStringChanged)="updateSearchString($event)"></app-board-search>
   <div class="container">
-    <div class="row" *ngFor="let board of boards">
+    <div class="row" *ngFor="let board of boards | boardsFilter: searchBoardString">
       <div class="col">
         <app-board (addTask)="onTaskAdd(board, $event)"
                    (updateTask)="onTaskUpdate($event)"

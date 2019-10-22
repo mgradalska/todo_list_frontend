@@ -4,8 +4,7 @@ import {Task} from "../interfaces/task";
 
 @Component({
   selector: 'app-task-details',
-  templateUrl: './task-details.component.html',
-  styleUrls: ['./task-details.component.css']
+  templateUrl: './task-details.component.html'
 })
 export class TaskDetailsComponent implements OnInit {
 
