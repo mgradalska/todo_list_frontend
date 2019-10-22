@@ -31,6 +31,14 @@ export class AppComponent implements OnInit {
       })
   }
 
+  onTaskAdd(board: Board, taskToAdd: Task) {
+    this.httpService
+      .addTask(taskToAdd)
+      .subscribe({
+        next: addedTask => board.tasks.push(addedTask)
+      })
+  }
+
   ngOnInit() {
     this.httpService
       .getBoards()

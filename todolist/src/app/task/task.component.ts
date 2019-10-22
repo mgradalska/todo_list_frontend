@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Task} from "../interfaces/task";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {TaskDetailsComponent} from "../task-details/task-details.component";
 
 @Component({
   selector: 'app-task',
@@ -8,7 +10,7 @@ import {Task} from "../interfaces/task";
 })
 export class TaskComponent implements OnInit {
 
-  constructor() {
+  constructor(private modalService: NgbModal) {
   }
 
   @Input() task: Task;
@@ -22,6 +24,15 @@ export class TaskComponent implements OnInit {
 
   delete() {
     this.deleteTask.emit(this.task);
+  }
+
+  showDetails() {
+    const detailsComponent = this.modalService.open(TaskDetailsComponent);
+    detailsComponent.componentInstance.task = this.task;
+    detailsComponent.componentInstance.editMode = true;
+    detailsComponent.componentInstance
+      .editedTask
+      .subscribe(editedTask => this.updateTask.emit(editedTask))
   }
 
   ngOnInit() {

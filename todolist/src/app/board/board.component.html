@@ -1,8 +1,8 @@
 <div class="card px-3">
   <div class="card-body">
     <h4 class="card-title">{{board.name}}</h4>
-    <div class="add-items d-flex"><input type="text" class="form-control todo-list-input">
-      <button class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
+    <div class="add-items d-flex"><input type="text" [(ngModel)]="newTaskTemplate.title" class="form-control-custom todo-list-input">
+      <button (click)="addNewTask()" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
     </div>
     <div class="list-wrapper">
       <ul class="d-flex flex-column-reverse todo-list">

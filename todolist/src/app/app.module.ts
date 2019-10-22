@@ -7,6 +7,8 @@ import {AppComponent} from './app.component';
 import {BoardComponent} from './board/board.component';
 import {TaskComponent} from './task/task.component';
 import {TaskDetailsComponent} from './task-details/task-details.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,10 +21,16 @@ import {TaskDetailsComponent} from './task-details/task-details.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [TaskDetailsComponent]
+  bootstrap: [
+    AppComponent,
+  ],
+  entryComponents: [
+    TaskDetailsComponent,
+  ]
 })
 export class AppModule {
 }
